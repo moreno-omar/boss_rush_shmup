@@ -37,4 +37,5 @@ end
 
 
 function love.update(dt)
+    world:update(dt)
 end

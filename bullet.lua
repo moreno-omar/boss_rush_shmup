@@ -21,12 +21,17 @@ return function(pos_x, pos_y)
     entity.fixture = love.physics.newFixture(entity.body, entity.shape)
     entity.fixture:setUserData(entity)
 
+    -- set velocity
+    entity.body:setLinearVelocity(0, 200)
+
     entity.draw = function(self)
         -- love.graphics.draw(image, 383, 248)
         -- bullet.body:getWorldPoints(bullet.shape:getPoint())
         local self_x, self_y = self.body:getWorldCenter()
         love.graphics.draw(image, self_x, self_y)
     end
+
+
 
     return entity
 end

@@ -1,6 +1,8 @@
 -- imports
 local world = require('world')
-local bullet = require('bullet')
+local create_bullet = require('bullet')
+
+local bullet = create_bullet(348,248)
 
 
 -- useful variables
@@ -28,7 +30,7 @@ function love.draw()
 
     love.graphics.draw(image, x_center - x_cirno_center, (height * 0.3) - y_cirno_center)
 
-    bullet:draw(x_center - x_cirno_center, (height * 0.3) - y_cirno_center)
+    bullet:draw()
 
 
 end

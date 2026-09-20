@@ -2,8 +2,19 @@
 local world = require('world')
 local create_bullet = require('bullet')
 
-local bullet = create_bullet(348,248)
+local down_bullet = create_bullet(348, 248)
+--[[
+local right_bullet = create_bullet(348, 248, 200, 0)
+local left_bullet = create_bullet(348, 248, -200, 0)
+local up_bullet = create_bullet(348, 248, 0, -200)
 
+local bullets = {
+    down_bullet,
+    right_bullet,
+    left_bullet,
+    up_bullet
+}
+--]]
 
 -- useful variables
 local width, height = love.graphics.getDimensions( )
@@ -30,7 +41,13 @@ function love.draw()
 
     love.graphics.draw(image, x_center - x_cirno_center, (height * 0.3) - y_cirno_center)
 
-    bullet:draw()
+    down_bullet:draw()
+
+    --[[
+    for index, value in ipairs(bullets) do
+        value.draw()
+    end
+    --]]
 
 
 end

@@ -14,15 +14,15 @@ local image = loadImage ("bullets/big1.png")
 
 -- when importing, have main provide coordinates
 -- return function(pos_x, pos_y)
-return function(pos_x, pos_y)
+return function(pos_x, pos_y, velocity_x, velocity_y)
     local entity = {}
-    entity.body = love.physics.newBody(world, pos_x, pos_y, 'dynamic')
+    entity.body = love.physics.newBody(world, pos_x, pos_y, 'kinematic')
     entity.shape = love.physics.newCircleShape(10)
     entity.fixture = love.physics.newFixture(entity.body, entity.shape)
     entity.fixture:setUserData(entity)
 
     -- set velocity
-    entity.body:setLinearVelocity(0, 200)
+    entity.body:setLinearVelocity(velocity_x, velocity_y)
 
     entity.draw = function(self)
         -- love.graphics.draw(image, 383, 248)

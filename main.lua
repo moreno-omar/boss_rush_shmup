@@ -1,6 +1,7 @@
 -- imports
 local world = require('world')
 local create_bullet = require('bullet')
+local player = require('player')
 
 local down_bullet = create_bullet(349, 248, 0, 200)
 --
@@ -20,6 +21,7 @@ local bullets = {
 local width, height = love.graphics.getDimensions( )
 local x_center = width / 2
 local y_center = height / 2
+local y = 0
 
 -- cirno size
 -- 134 × 224
@@ -41,6 +43,11 @@ function love.draw()
 
     love.graphics.draw(image, x_center - x_cirno_center, (height * 0.3) - y_cirno_center)
 
+    -- draw player
+    -- Draw the boss using the physics body coordinates
+    -- We subtract 2.5 to center the 5x5 rectangle on the body's X/Y coordinates
+    love.graphics.rectangle("fill", player.body:getX() - 2.5, player.body:getY() - 2.5, 5, 5)
+
     -- down_bullet:draw()
 
     --
@@ -55,4 +62,22 @@ end
 
 function love.update(dt)
     world:update(dt)
+
+    y = y + (dt * 100)
+    local rate = dt * 5000
+
+    -- move boss with input
+    if love.keyboard.isDown('up') then
+        -- boss_pos_y = boss_pos_y + (input_movement.up * rate)
+        player.body:setLinearVelocity(0, (-1 * rate))
+    elseif love.keyboard.isDown('down') then
+        player.body:setLinearVelocity(0, 1 * rate)
+    elseif love.keyboard.isDown('left') then
+        player.body:setLinearVelocity(-1 * rate, 0)
+    elseif love.keyboard.isDown('right') then
+        player.body:setLinearVelocity(1 * rate, 0)
+    else
+        -- Stop movement when no keys are pressed
+        player.body:setLinearVelocity(0, 0)
+    end
 end

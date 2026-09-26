@@ -9,9 +9,6 @@ local world = love.physics.newWorld(0, 0)
 -- only do for beginContact
 -- Four Lua functions can be given as arguments. The value nil removes a function.
 
--- disregard for now, not the correct way to stop dynamic body against static
-
---[[
 local function beginContact(a, b, collison)
     -- figure out which fixture is which
     local nameA = a:getUserData()
@@ -20,7 +17,7 @@ local function beginContact(a, b, collison)
 
     local x1, y1, x2, y2 = collison:getPositions()
 
-    -- call collision function for each boss fixture
+    --[[ call collision function for each boss fixture
     if nameA == "boss" then
         nameA:begin_contact(x1, y1)
         print("Collision detected!")
@@ -29,11 +26,12 @@ local function beginContact(a, b, collison)
     else
         return
     end
+    --]]
 end
 
 world:setCallbacks(beginContact, nil, nil, nil)
 
 
---]]
+
 
 return world

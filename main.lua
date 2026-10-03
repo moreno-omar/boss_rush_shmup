@@ -22,6 +22,7 @@ local width, height = love.graphics.getDimensions( )
 local x_center = width / 2
 local y_center = height / 2
 local y = 0
+local timer = 0 -- for bullet rate
 
 -- cirno size
 -- 134 × 224
@@ -44,7 +45,10 @@ function love.draw()
 
     love.graphics.setBackgroundColor(0.78, 0.88, 0.72)
 
-    love.graphics.draw(image, x_center - x_cirno_center, (height * 0.3) - y_cirno_center)
+    --love.graphics.draw(image, x_center - x_cirno_center, (height * 0.3) - y_cirno_center)
+
+    -- box for now
+    love.graphics.rectangle("fill", x_center - x_cirno_center, (height * 0.3) - y_cirno_center, 40, 40)
 
     -- draw player
     -- Draw the boss using the physics body coordinates
@@ -69,10 +73,14 @@ function love.update(dt)
 
     y = y + (dt * 100)
     local rate = dt * 5000
+
+    timer = timer + 1
 --
         -- player shooting
-    if love.keyboard.isDown('f') then
+    if love.keyboard.isDown('f') and (timer/10 > 1) then
         table.insert(bullets, player.shoot(player.body:getX() - 2.5,  player.body:getY() - 2.5, create_bullet))
+
+        timer = 0
     end
 --]]
 

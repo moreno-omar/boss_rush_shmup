@@ -39,14 +39,18 @@ end
 
 local image = loadImage ("cirno_2x.png")
 
+
 function love.draw()
+
+    love.graphics.setBackgroundColor(0.78, 0.88, 0.72)
 
     love.graphics.draw(image, x_center - x_cirno_center, (height * 0.3) - y_cirno_center)
 
     -- draw player
     -- Draw the boss using the physics body coordinates
     -- We subtract 2.5 to center the 5x5 rectangle on the body's X/Y coordinates
-    love.graphics.rectangle("fill", player.body:getX() - 2.5, player.body:getY() - 2.5, 5, 5)
+    -- has to call getY and getX or it will draw in the same place
+    love.graphics.rectangle("fill", player.body:getX() - 2.5,  player.body:getY() - 2.5, 20, 20)
 
     -- down_bullet:draw()
 
@@ -65,8 +69,14 @@ function love.update(dt)
 
     y = y + (dt * 100)
     local rate = dt * 5000
+--
+        -- player shooting
+    if love.keyboard.isDown('f') then
+        table.insert(bullets, player.shoot(player.body:getX() - 2.5,  player.body:getY() - 2.5, create_bullet))
+    end
+--]]
 
-    -- move boss with input
+    -- move player with input
     if love.keyboard.isDown('up') then
         -- boss_pos_y = boss_pos_y + (input_movement.up * rate)
         player.body:setLinearVelocity(0, (-1 * rate))
@@ -80,4 +90,5 @@ function love.update(dt)
         -- Stop movement when no keys are pressed
         player.body:setLinearVelocity(0, 0)
     end
+
 end

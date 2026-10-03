@@ -16,5 +16,12 @@ player.shoot = function (x, y, bullet)
     return bullet(x, y - 40, 0, -400)
 end
 
+player.damaged = function (self)
+    print("player hit")
+end
+
+-- color attribute. r,g,b
+player.color = {0,0,0}
+
 
 return player

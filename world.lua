@@ -17,6 +17,27 @@ local function beginContact(a, b, collison)
 
     local x1, y1, x2, y2 = collison:getPositions()
 
+    -- only care if a or b is player or bullet
+    if nameA == "boss" then
+        nameA:damaged()
+        print("Collision detected!")
+    elseif nameB == "boss" then
+        nameB:damaged()
+    else
+        return
+    end
+
+    if nameA == "player" then
+        nameA:damaged()
+        print("Collision detected!")
+    elseif nameB == "player" then
+        nameB:damaged()
+    else
+        return
+    end
+
+
+
     --[[ call collision function for each boss fixture
     if nameA == "boss" then
         nameA:begin_contact(x1, y1)

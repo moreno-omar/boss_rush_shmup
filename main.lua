@@ -2,6 +2,7 @@
 local world = require('world')
 local create_bullet = require('bullet')
 local player = require('player')
+local boss = require('boss')
 
 local down_bullet = create_bullet(349, 248, 0, 200)
 --
@@ -48,7 +49,10 @@ function love.draw()
     --love.graphics.draw(image, x_center - x_cirno_center, (height * 0.3) - y_cirno_center)
 
     -- box for now
-    love.graphics.rectangle("fill", x_center - x_cirno_center, (height * 0.3) - y_cirno_center, 40, 40)
+    --love.graphics.rectangle("fill", x_center - x_cirno_center, (height * 0.3) - y_cirno_center, 40, 40)
+
+    -- initialize boss
+    love.graphics.rectangle("fill", boss.body:getX(), boss.body:getY(), 40, 40)
 
     -- draw player
     -- Draw the boss using the physics body coordinates

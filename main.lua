@@ -44,7 +44,19 @@ local image = loadImage ("cirno_2x.png")
 
 function love.draw()
 
+    -- rectangle reference
+    -- love.graphics.rectangle( mode, x, y, width, height, rx, ry, segments )
+
     love.graphics.setBackgroundColor(0.78, 0.88, 0.72)
+
+    -- lifebar
+    love.graphics.rectangle("line", 20, 20, 860, 40)
+    -- love.graphics.setColor( red, green, blue, alpha )
+    love.graphics.setColor( 0, 0, 0 )
+    love.graphics.rectangle("fill", 22, 22, 856, 36)
+
+    -- return color back to normal
+    love.graphics.setColor( 255, 255, 255 )
 
     --love.graphics.draw(image, x_center - x_cirno_center, (height * 0.3) - y_cirno_center)
 

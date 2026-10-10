@@ -53,7 +53,7 @@ function love.draw()
     love.graphics.rectangle("line", 20, 20, 860, 40)
     -- love.graphics.setColor( red, green, blue, alpha )
     love.graphics.setColor( 0, 0, 0 )
-    love.graphics.rectangle("fill", 22, 22, 856, 36)
+    love.graphics.rectangle("fill", 22, 22, ((boss.health * 0.1) * 856), 36)
 
     -- return color back to normal
     love.graphics.setColor( 255, 255, 255 )

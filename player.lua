@@ -26,7 +26,17 @@ end
 -- color attribute. r,g,b
 player.color = {0,0,0}
 
-player.focus = {}
+player.focus = function (self)
+    if player.is_focused == true then
+        love.graphics.setColor( 255, 0, 0 )
+        love.graphics.rectangle("line", player.body:getX() + 1.5,  player.body:getY() + 1.5, 10, 10)
+        -- return color back to normal
+        love.graphics.setColor( 255, 255, 255 )
+        
+    end
+end
+
+player.is_focused = false
 
 
 return player

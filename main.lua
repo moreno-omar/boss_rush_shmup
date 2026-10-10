@@ -74,6 +74,8 @@ function love.draw()
 
     -- down_bullet:draw()
 
+    player:focus()
+
     --
     for index, value in ipairs(bullets) do
         value:draw()
@@ -99,6 +101,12 @@ function love.update(dt)
         timer = 0
     end
 --]]
+
+    if love.keyboard.isDown('d') then
+        player.is_focused = true
+    else
+        player.is_focused = false
+    end
 
     -- move player with input
     if love.keyboard.isDown('up') then

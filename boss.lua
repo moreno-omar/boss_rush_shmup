@@ -1,7 +1,7 @@
 local world = require('world')
 
 local boss = {}
-boss.body = love.physics.newBody(world, 450, 600, 'dynamic')
+boss.body = love.physics.newBody(world, 450, 200, 'dynamic')
 boss.shape = love.physics.newCircleShape(0, 0, 10)
 
 -- fix into place. Set mass so it can be moved by boss input, but not by bullet or border
@@ -16,8 +16,17 @@ boss.id = "boss"
 
 boss.damaged = function(self) 
     print("boss hit")
+    if boss.health == 0 then
+        return 0
+    end
     boss.health = boss.health - 1
 end
+
+boss.healthbar = function(self)
+    return ( (boss.health * 0.1) * 856 )
+end
+
+    
 
 
 

@@ -20,10 +20,12 @@ local function beginContact(a, b, collison)
     local x1, y1, x2, y2 = collison:getPositions()
 
     -- only care if a or b is player or bullet
+
+    -- if nameA == boss then
     if nameA.id == "boss" then
         nameA:damaged()
         print("Collision detected!")
-    elseif nameB == "boss" then
+    elseif nameA.id == "boss" then
         nameB:damaged()
     else
         return

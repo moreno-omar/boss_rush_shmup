@@ -29,7 +29,8 @@ player.color = {0,0,0}
 player.focus = function (self)
     if player.is_focused == true then
         love.graphics.setColor( 255, 0, 0 )
-        love.graphics.rectangle("line", player.body:getX() + 1.5,  player.body:getY() + 1.5, 10, 10)
+        --love.graphics.rectangle("line", player.body:getX() + 1.5,  player.body:getY() + 1.5, 10, 10)
+        love.graphics.circle("line",player.body:getX(), player.body:getY(), 10 )
         -- return color back to normal
         love.graphics.setColor( 255, 255, 255 )
         

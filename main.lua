@@ -70,8 +70,8 @@ function love.draw()
     -- Draw the boss using the physics body coordinates
     -- We subtract 2.5 to center the 5x5 rectangle on the body's X/Y coordinates
     -- has to call getY and getX or it will draw in the same place
-    love.graphics.rectangle("fill", player.body:getX() - 2.5,  player.body:getY() - 2.5, 20, 20)
-
+    -- love.graphics.rectangle("fill", player.body:getX() - 2.5,  player.body:getY() - 2.5, 20, 20)
+    love.graphics.circle("fill",player.body:getX(), player.body:getY(), 20 )
     -- down_bullet:draw()
 
     player:focus()

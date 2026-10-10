@@ -104,14 +104,16 @@ function love.update(dt)
 
     if love.keyboard.isDown('d') then
         player.is_focused = true
+        player.speed = 0.5
     else
         player.is_focused = false
+        player.speed = 1
     end
 
     -- move player with input
     if love.keyboard.isDown('up') then
         -- boss_pos_y = boss_pos_y + (input_movement.up * rate)
-        player.body:setLinearVelocity(0, (-1 * rate))
+        player.body:setLinearVelocity(0, (-1 * rate) * player.speed )
     elseif love.keyboard.isDown('down') then
         player.body:setLinearVelocity(0, 1 * rate)
     elseif love.keyboard.isDown('left') then

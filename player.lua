@@ -37,6 +37,7 @@ player.focus = function (self)
 end
 
 player.is_focused = false
+player.speed = 1
 
 
 return player

@@ -3,6 +3,7 @@ local world = require('world')
 local create_bullet = require('bullet')
 local player = require('player')
 local boss = require('boss')
+local square = require('square_pattern')
 
 local down_bullet = create_bullet(349, 248, 0, 200)
 --
@@ -81,6 +82,10 @@ function love.draw()
         value:draw()
     end
     --
+
+    for i, points in ipairs(square) do
+        love.graphics.rectangle("fill", points[1] * 16, points[2] * 16, 16, 16)
+    end
 
 
 end

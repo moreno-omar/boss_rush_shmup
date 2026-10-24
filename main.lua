@@ -19,6 +19,12 @@ local bullets = {
 }
 --]]
 
+-- load bullets from pattern
+for i, point in ipairs(square) do
+		table.insert(bullets, create_bullet(point[1]*16, point[2] * 16, 0, 200))
+end
+
+
 -- useful variables
 local width, height = love.graphics.getDimensions( )
 local x_center = width / 2

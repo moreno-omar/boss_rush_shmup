@@ -92,7 +92,16 @@ function love.draw()
 
     --
     for index, value in ipairs(bullets) do
-        value:draw()
+
+        local bullet_y = value.body:getY()
+
+        if bullet_y > 1200 or bullet_y < 0 then
+            print("out of bounds")
+            table.remove(bullets, index)
+        else
+            value:draw()
+        end
+
     end
     --
 

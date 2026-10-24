@@ -8,6 +8,9 @@ player.shape = love.physics.newCircleShape(0, 0, 10)
 player.fixture = love.physics.newFixture(player.body, player.shape, 1)
 player.fixture:setUserData(player)
 
+-- have player detect, not respond to bullet
+player.fixture:setSensor(true)
+
 player.id = "player"
 
 player.shoot = function (x, y, bullet)

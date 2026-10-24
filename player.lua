@@ -37,6 +37,15 @@ player.focus = function (self)
     end
 end
 
+player.bounded = function(self, rate)
+    local y = self.body:getY()
+    if y > 1200 then
+        return 0
+    end
+
+    return rate
+end
+
 player.is_focused = false
 player.speed = 1
 

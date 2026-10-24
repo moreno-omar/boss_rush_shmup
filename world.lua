@@ -14,8 +14,7 @@ local function beginContact(a, b, collison)
     local nameA = a:getUserData()
     local nameB = b:getUserData()
     -- print("Collision detected!")
-    print(nameA.health)
-    print(nameA.identity)
+    print(nameA.id)
 
     local x1, y1, x2, y2 = collison:getPositions()
 
@@ -24,20 +23,15 @@ local function beginContact(a, b, collison)
     -- if nameA == boss then
     if nameA.id == "boss" then
         nameA:damaged()
-        print("Collision detected!")
     elseif nameA.id == "boss" then
         nameB:damaged()
-    else
-        return
     end
 
-    if nameA == "player" then
+    if nameA.id == "player" then
         nameA:damaged()
         print("Collision detected!")
-    elseif nameB == "player" then
+    elseif nameB.id == "player" then
         nameB:damaged()
-    else
-        return
     end
 
 
@@ -53,6 +47,7 @@ local function beginContact(a, b, collison)
     end
     --]]
 end
+
 
 world:setCallbacks(beginContact, nil, nil, nil)
 

@@ -16,14 +16,15 @@ boss.id = "boss"
 
 boss.damaged = function(self) 
     print("boss hit")
+    print(self.health)
     if boss.health == 0 then
         return 0
     end
-    boss.health = boss.health - 1
+    self.health = self.health - 1
 end
 
 boss.healthbar = function(self)
-    return ( (boss.health * 0.1) * 856 )
+    return ( (self.health * 0.1) * 856 )
 end
 
     

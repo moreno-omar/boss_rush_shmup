@@ -1,7 +1,7 @@
 local world = require('world')
 
 local boss = {}
-boss.body = love.physics.newBody(world, 450, 200, 'dynamic')
+boss.body = love.physics.newBody(world, 430, 180, 'dynamic')
 boss.shape = love.physics.newCircleShape(0, 0, 10)
 
 -- fix into place. Set mass so it can be moved by boss input, but not by bullet or border

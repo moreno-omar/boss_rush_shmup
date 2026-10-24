@@ -45,6 +45,13 @@ local image = loadImage ("cirno_2x.png")
 
 function love.draw()
 
+    -- set reference centered lines
+    -- horizontal center
+    love.graphics.setColor(0.2, 0.2, 0.2)
+    love.graphics.line(x_center, 0, x_center, height)
+    love.graphics.line(0, y_center, width, y_center)
+
+
     -- rectangle reference
     -- love.graphics.rectangle( mode, x, y, width, height, rx, ry, segments )
 
@@ -101,7 +108,7 @@ function love.update(dt)
 --
         -- player shooting
     if love.keyboard.isDown('f') and (timer/10 > 1) then
-        table.insert(bullets, player.shoot(player.body:getX() - 2.5,  player.body:getY() - 2.5, create_bullet))
+        table.insert(bullets, player.shoot(player.body:getX() ,  player.body:getY() - 2.5, create_bullet))
 
         timer = 0
     end

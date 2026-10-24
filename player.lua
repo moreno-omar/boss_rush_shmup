@@ -16,7 +16,7 @@ player.shoot = function (x, y, bullet)
     -- x, y = player.body:getPosition()
 
 
-    return bullet(x, y - 40, 0, -400)
+    return bullet(x - 15, y - 40, 0, -400)
 end
 
 player.damaged = function (self)

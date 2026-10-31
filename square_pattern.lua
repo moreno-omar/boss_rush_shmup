@@ -3,6 +3,7 @@
 -- provide 1 table of all the points
 -- use grid to place in gamez
 
+local movement = require('bullet_movement')
 
 ---[[
 local bullets = { 
@@ -40,5 +41,7 @@ local bullets = {
 { 27 , 20 },
 }
 
-return bullets
+local bullets_with_movement = movement.Down(bullets)
+
+return bullets_with_movement
 --]]

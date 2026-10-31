@@ -19,11 +19,13 @@ local bullets = {
 }
 --]]
 
+
 -- load bullets from pattern
 for i, point in ipairs(square) do
-		table.insert(bullets, create_bullet(point[1]*16, point[2] * 16, 0, 200))
+		-- table.insert(bullets, create_bullet(point[1]*16, point[2] * 16, 0, 200))
+        table.insert(bullets, point)
 end
-
+--]]
 
 -- useful variables
 local width, height = love.graphics.getDimensions( )
@@ -106,7 +108,8 @@ function love.draw()
     --
 
     for i, points in ipairs(square) do
-        love.graphics.rectangle("fill", points[1] * 16, points[2] * 16, 16, 16)
+        -- love.graphics.rectangle("fill", points[1] * 16, points[2] * 16, 16, 16)
+        points:draw()
     end
 
 

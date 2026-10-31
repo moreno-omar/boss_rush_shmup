@@ -4,6 +4,7 @@ local create_bullet = require('bullet')
 local player = require('player')
 local boss = require('boss')
 local square = require('square_pattern')
+local b_move = require('bullet_movement')
 
 local down_bullet = create_bullet(349, 248, 0, 200)
 --
@@ -38,6 +39,9 @@ local timer = 0 -- for bullet rate
 -- 134 × 224
 -- 67 x 112
 local x_cirno_center, y_cirno_center = 67, 112
+
+-- b_move testing
+local b = b_move.aimed({{150, 200}}, player)
 
 
 function loadImage (path)
@@ -111,6 +115,8 @@ function love.draw()
         -- love.graphics.rectangle("fill", points[1] * 16, points[2] * 16, 16, 16)
         points:draw()
     end
+
+--    print(string.format("x: %d", b))
 
 
 end

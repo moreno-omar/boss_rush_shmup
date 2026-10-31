@@ -17,13 +17,25 @@ Output : bullet made with create_bullet with desired velocities
 
 --]]
 
-local M = {}
-
 local create_bullet = require('bullet')
 
-function M.Down(bullets)
+local M = {}
+local bullets_with_velocity = {}
+local bullet_rate = 200
 
-    local bullets_with_velocity = {}
+-- helper functions only for this file
+
+local function player_slope(bullet_pair, player)
+    local bx = ((player.body:getX() - bullet_pair[1]) / bullet_pair[1]) * bullet_rate
+    local by = ((player.body:getY() - bullet_pair[2]) / bullet_pair[2]) * bullet_rate
+
+    return {bx, by}
+end
+
+
+-- can be used within bullet pattern
+-- later -> call create_bullet from 2nd argument passed?
+function M.Down(bullets)
 
     for i, xy in ipairs(bullets) do
         table.insert(bullets_with_velocity, create_bullet(xy[1] * 16 , xy[2] *16, 0, 200))
@@ -32,5 +44,31 @@ function M.Down(bullets)
     return bullets_with_velocity
 
 end
+
+-- following functions have to be in main
+-- since they require either player or boss
+
+M.aimed = function(bullets, player)
+
+
+---[[
+    local temp = player_slope(bullets[1], player)
+    return(temp[1])
+--]]
+
+--[[
+    
+
+    for i, xy in pairs(bullets) do
+        local temp = player_slope(xy, player)
+        table.insert(bullets_with_velocity, create_bullet(xy[1] * 16 , xy[2] *16, temp[1], temp[2]))
+    end
+--]]
+
+
+
+end
+
+
 
 return M

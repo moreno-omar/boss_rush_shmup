@@ -41,7 +41,11 @@ local bullets = {
 { 27 , 20 },
 }
 
+--[[
+-- uncomment to work with down
 local bullets_with_movement = movement.Down(bullets)
 
 return bullets_with_movement
 --]]
+
+return bullets

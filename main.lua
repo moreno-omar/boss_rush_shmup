@@ -21,7 +21,8 @@ local bullets = {
 --]]
 
 
--- load bullets from pattern
+--[[ load bullets from pattern
+-- uncomment out block to re-use `Down` movement
 for i, point in ipairs(square) do
 		-- table.insert(bullets, create_bullet(point[1]*16, point[2] * 16, 0, 200))
         table.insert(bullets, point)
@@ -35,13 +36,14 @@ local y_center = height / 2
 local y = 0
 local timer = 0 -- for bullet rate
 
--- cirno size
+-- cirno size--
 -- 134 × 224
 -- 67 x 112
 local x_cirno_center, y_cirno_center = 67, 112
 
 -- b_move testing
-local b = b_move.aimed({{150, 200}}, player)
+-- local b = b_move.aimed({{150, 200}}, player)
+local aimed_square = b_move.aimed(square, player)
 
 
 function loadImage (path)
@@ -111,10 +113,13 @@ function love.draw()
     end
     --
 
-    for i, points in ipairs(square) do
+    ---[[
+    ----- comment out block to re-use `Down` movement
+    for i, points in ipairs(aimed_square) do
         -- love.graphics.rectangle("fill", points[1] * 16, points[2] * 16, 16, 16)
         points:draw()
     end
+    --]]
 
 --    print(string.format("x: %d", b))
 
